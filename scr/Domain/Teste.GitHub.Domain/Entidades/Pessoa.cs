@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,14 +21,20 @@ namespace Teste.GitHub.Domain.Entidades
         //AllowEmptyStrings permite escrita em branco
         [Required(ErrorMessage ="Informe o nome", AllowEmptyStrings=false)]
         [MaxLength(100), MinLength(2, ErrorMessage ="Escreva no minimo 3 caracteres")]
+        [Column(TypeName = "VARCHAR")]
         public string Nome { get; set; }
 
         [MaxLength(100), MinLength(4, ErrorMessage = "Digite no minimo 4 caracteres")]
+        [Column(TypeName = "VARCHAR")]
         public string Endereco { get; set; }
 
+        [Required(ErrorMessage = "Preencha o CPF")]
+        [Column(TypeName = "VARCHAR")]
+        public string CPF { get; set; }
 
         [Required(ErrorMessage = "Informe o seu email")]
-        [RegularExpression(".+\\@.+\\..+", ErrorMessage = "Informe um email válido...")]
+        [EmailAddress(ErrorMessage = "E-mail em formato inválido.")]
+        [Column(TypeName = "VARCHAR")]
         public string Email { get; set; }
 
 
@@ -36,7 +43,9 @@ namespace Teste.GitHub.Domain.Entidades
         [DisplayFormat(DataFormatString = "dd/mm/yyyy")]
         public DateTime DataNascimento { get; set; }
 
-
+        [Required(ErrorMessage = "Preencha o telefone")]
+        [StringLength(11, MinimumLength = 11, ErrorMessage = "Número inválido 68992317348")]
+        [Column(TypeName = "VARCHAR")]
         public string Telefone { get; set; }
 
         public DateTime DataCadastro { get; set; }
