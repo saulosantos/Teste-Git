@@ -14,7 +14,11 @@ namespace Teste.GitHub.Domain.Context
 
         public DbContextGit() : base("DbContextGit")
         {
-                
+            //Cria o Banco de Dados caso ele não exista
+            //Depois do new, existem outras opções de criação
+            Database.SetInitializer(new CreateDatabaseIfNotExists<DbContextGit>());     
+            
+              
         }
 
         public DbSet<Pessoa> Pessoas { get; set; }
