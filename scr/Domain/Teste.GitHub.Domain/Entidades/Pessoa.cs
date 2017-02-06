@@ -32,8 +32,8 @@ namespace Teste.GitHub.Domain.Entidades
         [Column(TypeName = "VARCHAR")]
         public string CPF { get; set; }
 
-        [Required(ErrorMessage = "Informe o seu email")]
-        [EmailAddress(ErrorMessage = "E-mail em formato inválido.")]
+        //[Required(ErrorMessage = "Informe o seu email")]
+        //[EmailAddress(ErrorMessage = "E-mail em formato inválido.")]
         [Column(TypeName = "VARCHAR")]
         public string Email { get; set; }
 

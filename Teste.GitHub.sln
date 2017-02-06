@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Teste.GitHub.Domain", "scr\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Teste.GitHub.Web", "Teste.GitHub.Web\Teste.GitHub.Web.csproj", "{A2A56385-0D8E-49CF-BC4A-C2049C8990C9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Teste.GitHub.ConsoleAPP", "Teste.GitHub.ConsoleAPP\Teste.GitHub.ConsoleAPP.csproj", "{3FF09EFE-A6E7-4D7E-8A46-D89613E21D5A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{A2A56385-0D8E-49CF-BC4A-C2049C8990C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A2A56385-0D8E-49CF-BC4A-C2049C8990C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A2A56385-0D8E-49CF-BC4A-C2049C8990C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FF09EFE-A6E7-4D7E-8A46-D89613E21D5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FF09EFE-A6E7-4D7E-8A46-D89613E21D5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FF09EFE-A6E7-4D7E-8A46-D89613E21D5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FF09EFE-A6E7-4D7E-8A46-D89613E21D5A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

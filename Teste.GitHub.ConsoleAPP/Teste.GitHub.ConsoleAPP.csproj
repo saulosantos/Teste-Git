@@ -4,15 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{686C5BD5-A0FB-4BA6-B3E2-46363537E2A5}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{3FF09EFE-A6E7-4D7E-8A46-D89613E21D5A}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Teste.GitHub.Domain</RootNamespace>
-    <AssemblyName>Teste.GitHub.Domain</AssemblyName>
+    <RootNamespace>Teste.GitHub.ConsoleAPP</RootNamespace>
+    <AssemblyName>Teste.GitHub.ConsoleAPP</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -31,11 +34,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -49,34 +52,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Context\DbContextGit.cs" />
-    <Compile Include="Entidades\Pessoa.cs" />
-    <Compile Include="Entidades\Propriedade.cs" />
-    <Compile Include="Migrations\201702031610210_PrimeiroMigration.cs" />
-    <Compile Include="Migrations\201702031610210_PrimeiroMigration.Designer.cs">
-      <DependentUpon>201702031610210_PrimeiroMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201702061514065_TesteSegundaFeira.cs" />
-    <Compile Include="Migrations\201702061514065_TesteSegundaFeira.Designer.cs">
-      <DependentUpon>201702061514065_TesteSegundaFeira.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositorio\PessoaReposotorio.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201702031610210_PrimeiroMigration.resx">
-      <DependentUpon>201702031610210_PrimeiroMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201702061514065_TesteSegundaFeira.resx">
-      <DependentUpon>201702061514065_TesteSegundaFeira.cs</DependentUpon>
-    </EmbeddedResource>
+    <ProjectReference Include="..\scr\Domain\Teste.GitHub.Domain\Teste.GitHub.Domain.csproj">
+      <Project>{686c5bd5-a0fb-4ba6-b3e2-46363537e2a5}</Project>
+      <Name>Teste.GitHub.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

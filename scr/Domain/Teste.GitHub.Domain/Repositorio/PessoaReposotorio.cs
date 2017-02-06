@@ -10,23 +10,36 @@ namespace Teste.GitHub.Domain.Repositorio
 {
     public class PessoaReposotorio
     {
-        private readonly DbContextGit _context = new DbContextGit();
+       
 
         public void SalvarPessoa(Pessoa pessoa)
         {
-            _context.Pessoas.Add(pessoa);
-            _context.SaveChanges();
+            using (var _context = new DbContextGit())
+            {
+                _context.Pessoas.Add(pessoa);
+                _context.SaveChanges();
+
+            }
+
         }
 
 
         public Pessoa OberPorId(int id)
         {
-            return _context.Pessoas.Single(p => p.PessoaId == id);
+            using (var _context = new DbContextGit())
+            {
+                return _context.Pessoas.Single(p => p.PessoaId == id);
+            }
+
         }
 
         public Pessoa ObterPorCpf(string cpf)
         {
-            return _context.Pessoas.Single(p => p.CPF == cpf);
+            using (var _context = new DbContextGit())
+            {
+                return _context.Pessoas.Single(p => p.CPF == cpf);
+            }
+               
         }
 
     }
