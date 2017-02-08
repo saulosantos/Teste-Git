@@ -50,10 +50,12 @@ namespace Teste.GitHub.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PessoaId,Nome,Endereco,CPF,Email,DataNascimento,Telefone,DataCadastro,Ativo")] Pessoa pessoa)
+        public ActionResult Create([Bind(Include = "PessoaId,Nome,Endereco,CPF,Email,DataNascimento,Telefone,Ativo")] Pessoa pessoa)
         {
             if (ModelState.IsValid)
             {
+                pessoa.DataCadastro = DateTime.Now;
+                pessoa.Ativo = true;
                 _contexto.SalvarPessoa(pessoa);
                 return RedirectToAction("Index");
             }

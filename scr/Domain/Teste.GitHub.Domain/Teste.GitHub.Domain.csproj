@@ -52,6 +52,8 @@
     <Compile Include="Context\DbContextGit.cs" />
     <Compile Include="Entidades\Pessoa.cs" />
     <Compile Include="Entidades\Propriedade.cs" />
+    <Compile Include="Entidades\TipoUsuario.cs" />
+    <Compile Include="Entidades\Usuario.cs" />
     <Compile Include="Migrations\201702031610210_PrimeiroMigration.cs" />
     <Compile Include="Migrations\201702031610210_PrimeiroMigration.Designer.cs">
       <DependentUpon>201702031610210_PrimeiroMigration.cs</DependentUpon>
@@ -59,6 +61,14 @@
     <Compile Include="Migrations\201702061514065_TesteSegundaFeira.cs" />
     <Compile Include="Migrations\201702061514065_TesteSegundaFeira.Designer.cs">
       <DependentUpon>201702061514065_TesteSegundaFeira.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702082024088_Quarta-08-02.cs" />
+    <Compile Include="Migrations\201702082024088_Quarta-08-02.Designer.cs">
+      <DependentUpon>201702082024088_Quarta-08-02.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702082153162_InclusaoUsuario.cs" />
+    <Compile Include="Migrations\201702082153162_InclusaoUsuario.Designer.cs">
+      <DependentUpon>201702082153162_InclusaoUsuario.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -74,6 +84,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702061514065_TesteSegundaFeira.resx">
       <DependentUpon>201702061514065_TesteSegundaFeira.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702082024088_Quarta-08-02.resx">
+      <DependentUpon>201702082024088_Quarta-08-02.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702082153162_InclusaoUsuario.resx">
+      <DependentUpon>201702082153162_InclusaoUsuario.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

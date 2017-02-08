@@ -32,8 +32,8 @@ namespace Teste.GitHub.Domain.Entidades
         [Column(TypeName = "VARCHAR")]
         public string CPF { get; set; }
 
-        //[Required(ErrorMessage = "Informe o seu email")]
-        //[EmailAddress(ErrorMessage = "E-mail em formato inválido.")]
+        [Required(ErrorMessage = "Informe o seu email")]
+        [EmailAddress(ErrorMessage = "E-mail em formato inválido.")]
         [Column(TypeName = "VARCHAR")]
         public string Email { get; set; }
 
@@ -44,7 +44,7 @@ namespace Teste.GitHub.Domain.Entidades
         public DateTime DataNascimento { get; set; }
 
         [Required(ErrorMessage = "Preencha o telefone")]
-        [StringLength(11, MinimumLength = 11, ErrorMessage = "Número inválido 68992317348")]
+        [StringLength(11, MinimumLength = 11, ErrorMessage = "Número inválido (DDD)Número")]
         [Column(TypeName = "VARCHAR")]
         public string Telefone { get; set; }
 
