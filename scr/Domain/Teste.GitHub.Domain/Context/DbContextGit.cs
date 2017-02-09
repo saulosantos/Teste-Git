@@ -16,13 +16,18 @@ namespace Teste.GitHub.Domain.Context
         {
             //Cria o Banco de Dados caso ele não exista
             //Depois do new, existem outras opções de criação
-            Database.SetInitializer(new CreateDatabaseIfNotExists<DbContextGit>());     
-            
-              
+            Database.SetInitializer(new CreateDatabaseIfNotExists<DbContextGit>());
+
+
+
+
+
         }
 
         public DbSet<Pessoa> Pessoas { get; set; }
         public DbSet<Propriedade> propriedades { get; set; }
+        public DbSet<TipoUsuario> TipoUsuarios { get; set; }
+        public DbSet<Usuario> Usurios { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

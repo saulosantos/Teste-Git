@@ -24,11 +24,11 @@ namespace Teste.GitHub.ConsoleAPP
             //    db.SaveChanges();
             // }
 
-            PessoaReposotorio db = new PessoaReposotorio();
-            db.SalvarPessoa(nomes);
+            //PessoaReposotorio db = new PessoaReposotorio();
+            //db.SalvarPessoa(nomes);
 
 
-            Console.WriteLine("Salvando....");
+            Console.WriteLine("Olá mundo maluco!");
             Console.ReadKey();
     }
     }
