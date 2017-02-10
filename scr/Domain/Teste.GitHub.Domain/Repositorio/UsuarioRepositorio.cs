@@ -28,5 +28,25 @@ namespace Teste.GitHub.Domain.Repositorio
                 return _context.Usurios.Single(p => p.UsuarioId == id);
             }
         }
+
+        public void CadastrarTipoUsuario(TipoUsuario tipoUser)
+        {
+            using (var _context = new DbContextGit())
+            {
+                _context.TipoUsuarios.Add(tipoUser);
+                _context.SaveChanges();
+            }
+        }
+
+        public IEnumerable<TipoUsuario> ObterTipoUser()
+        {
+            using (var _context = new DbContextGit())
+            {
+                return _context.TipoUsuarios.Where(t => t.Ativo == true).OrderBy(t => t.NomeTipoUsuario).ToList();
+            }
+
+        }
+
+
     }
 }
