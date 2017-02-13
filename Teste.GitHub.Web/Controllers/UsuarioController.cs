@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Teste.GitHub.Domain.Entidades;
@@ -16,15 +17,19 @@ namespace Teste.GitHub.Web.Controllers
         // GET: Usuario
         public ActionResult Index()
         {
-            return View();
+
+            return View(_contexto.ListarUsuarios().ToList());
         }
 
 
 
         public ActionResult Cadastrar()
         {
-            ViewBag.ListaTipoUser = new SelectList(_contexto.ObterTipoUser(), "TipoUsuarioId", "NomeTipoUsuario");
 
+            ViewBag.TipoUsuarioId = new SelectList(
+                _contexto.ListaTiposUsuarios(), "TipoUsuarioId", "NomeTipoUsuario"
+                );
+     
             return View();
         }
 
@@ -32,18 +37,22 @@ namespace Teste.GitHub.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-       // public ActionResult Cadastrar([Bind(Include = "NomeUsuario, LoginUser, SenhaUsuario, ConfirmaSenha, ListaTipoUser")]Usuario usuario)
-        public ActionResult Cadastrar(Usuario usuario)
+        public ActionResult Cadastrar([Bind(Include = "NomeUsuario, LoginUser, SenhaUsuario, ConfirmaSenha, TipoUsuarioId")]Usuario usuario)
+        //public ActionResult Cadastrar(Usuario usuario)
         {
-           
+            ViewBag.TipoUsuarioId = new SelectList(
+                _contexto.ListaTiposUsuarios(),
+                "TipoUsuarioId",
+                "NomeTipoUsuario",
+                usuario.TipoUsuarioId);
 
             if (ModelState.IsValid)
             {
-                usuario.TipoUsuarioId = 1;
                 usuario.Ativo = true;
                 usuario.DataCadastro = DateTime.Now;
                 _contexto.CadastrarUsuario(usuario);
-                return View(usuario);
+
+                return RedirectToAction("Index");
             }
 
             return View();
@@ -63,5 +72,6 @@ namespace Teste.GitHub.Web.Controllers
 
             return View();
         }
+
     }
 }

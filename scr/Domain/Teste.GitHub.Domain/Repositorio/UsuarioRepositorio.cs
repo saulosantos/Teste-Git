@@ -20,7 +20,13 @@ namespace Teste.GitHub.Domain.Repositorio
         }
 
 
-        public Usuario BuscarPorId(int id)
+        //Quando falamos de coleções temos 3 coleçoes principais
+        //IEnumerable -> Lista somente leitus
+        //IQueryable -> Lista leitura e pesquisa
+        //IList -> Lista leitura, pesquisa, gravacao = DESDE O .NET 2.0
+        //IColletion -> Alternativa mais RECENTE, MODERNA, LEVE AO ILIST = .NET 4.0
+
+        /*public Usuario BuscarPorId(int id)
         {
             using (var _context = new DbContextGit())
             {
@@ -28,6 +34,7 @@ namespace Teste.GitHub.Domain.Repositorio
                 return _context.Usurios.Single(p => p.UsuarioId == id);
             }
         }
+        */
 
         public void CadastrarTipoUsuario(TipoUsuario tipoUser)
         {
@@ -38,11 +45,32 @@ namespace Teste.GitHub.Domain.Repositorio
             }
         }
 
-        public IEnumerable<TipoUsuario> ObterTipoUser()
+        public IList<Usuario> ListarUsuarios()
         {
             using (var _context = new DbContextGit())
             {
+                return _context.Usurios.Include("TipoUsuario").Where(t => t.Ativo == true).OrderBy(t => t.NomeUsuario).ToList();
+                //return _context.Usurios.Where(t => t.Ativo == true).OrderBy(t => t.NomeUsuario).ToList();
+            }
+
+        }
+
+        public List<TipoUsuario> ListaTiposUsuarios()
+        {
+
+            using (var _context = new DbContextGit())
+            {
                 return _context.TipoUsuarios.Where(t => t.Ativo == true).OrderBy(t => t.NomeTipoUsuario).ToList();
+            }
+
+        }
+
+        public Usuario BuscarPorId(int id)
+        {
+            using (var _context = new DbContextGit())
+            {
+                return _context.Usurios.Find(id);
+
             }
 
         }
