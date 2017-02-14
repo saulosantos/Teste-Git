@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -69,7 +70,33 @@ namespace Teste.GitHub.Domain.Repositorio
         {
             using (var _context = new DbContextGit())
             {
-                return _context.Usurios.Find(id);
+
+                return _context.Usurios.Include("TipoUsuario").SingleOrDefault(t => t.UsuarioId == id);
+
+            }
+
+        }
+
+        public void AtualizaUsuario(Usuario usuario)
+        {
+ 
+           
+            using (var _context = new DbContextGit())
+            {
+
+                var usuarioBd = _context.Usurios.Find(usuario.UsuarioId);
+
+                if (usuarioBd != null)
+                {
+                    usuarioBd.DataCadastro = DateTime.Now;
+                    usuarioBd.NomeUsuario = usuario.NomeUsuario;
+                    usuarioBd.LoginUser = usuario.LoginUser;
+                    usuarioBd.Ativo = usuario.Ativo;
+                    usuarioBd.TipoUsuarioId = usuario.TipoUsuarioId;
+                    _context.Entry<Usuario>(usuarioBd).State = System.Data.Entity.EntityState.Modified;
+                    _context.SaveChanges();
+                }
+
 
             }
 

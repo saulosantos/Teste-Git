@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Teste.GitHub.Domain.Context;
 using Teste.GitHub.Domain.Entidades;
 using Teste.GitHub.Domain.Repositorio;
 
@@ -13,6 +15,9 @@ namespace Teste.GitHub.Web.Controllers
     {
 
         UsuarioRepositorio _contexto = new UsuarioRepositorio();
+
+        private DbContextGit db = new DbContextGit();
+
 
         // GET: Usuario
         public ActionResult Index()
@@ -29,7 +34,7 @@ namespace Teste.GitHub.Web.Controllers
             ViewBag.TipoUsuarioId = new SelectList(
                 _contexto.ListaTiposUsuarios(), "TipoUsuarioId", "NomeTipoUsuario"
                 );
-     
+
             return View();
         }
 
@@ -60,6 +65,7 @@ namespace Teste.GitHub.Web.Controllers
 
 
         //Cadastra o Tipo do Usuario -Admim, Comum, Etc...
+        [ValidateAntiForgeryToken]
         public ActionResult CadastrarTipoUsuario(TipoUsuario tipoUser)
         {
 
@@ -71,6 +77,34 @@ namespace Teste.GitHub.Web.Controllers
             }
 
             return View();
+        }
+
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            Usuario usurio = _contexto.BuscarPorId(id);
+
+            ViewBag.TipoUsuarioId = new SelectList(
+            _contexto.ListaTiposUsuarios(), "TipoUsuarioId", "NomeTipoUsuario"
+             );
+
+            return View(usurio);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "UsuarioId, NomeUsuario, LoginUser, Ativo, TipoUsuarioId")]Usuario usuario)
+        {
+
+             ViewBag.TipoUsuarioId = new SelectList(
+                 _contexto.ListaTiposUsuarios(),
+                 "TipoUsuarioId",
+                 "NomeTipoUsuario",
+                 usuario.TipoUsuarioId);
+
+            _contexto.AtualizaUsuario(usuario);
+
+            return View();
+
         }
 
     }
