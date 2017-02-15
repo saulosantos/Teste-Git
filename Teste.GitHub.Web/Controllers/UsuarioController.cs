@@ -5,7 +5,6 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Teste.GitHub.Domain.Context;
 using Teste.GitHub.Domain.Entidades;
 using Teste.GitHub.Domain.Repositorio;
 
@@ -16,7 +15,7 @@ namespace Teste.GitHub.Web.Controllers
 
         UsuarioRepositorio _contexto = new UsuarioRepositorio();
 
-        private DbContextGit db = new DbContextGit();
+
 
 
         // GET: Usuario
@@ -101,11 +100,18 @@ namespace Teste.GitHub.Web.Controllers
                  "NomeTipoUsuario",
                  usuario.TipoUsuarioId);
 
-            _contexto.AtualizaUsuario(usuario);
+            if (ModelState.IsValid)
+            {
+                _contexto.AtualizaUsuario(usuario);
+            }
 
+                        
             return View();
 
         }
+
+
+
 
     }
 }

@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\DbContextGit.cs" />
+    <Compile Include="Entidades\ArquivoPessoa.cs" />
     <Compile Include="Entidades\Pessoa.cs" />
     <Compile Include="Entidades\Propriedade.cs" />
     <Compile Include="Entidades\TipoUsuario.cs" />
@@ -78,6 +79,10 @@
     <Compile Include="Migrations\201702091531179_UserMApeamento.Designer.cs">
       <DependentUpon>201702091531179_UserMApeamento.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702152049186_ArquivosUsuario.cs" />
+    <Compile Include="Migrations\201702152049186_ArquivosUsuario.Designer.cs">
+      <DependentUpon>201702152049186_ArquivosUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorio\PessoaReposotorio.cs" />
@@ -105,6 +110,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702091531179_UserMApeamento.resx">
       <DependentUpon>201702091531179_UserMApeamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702152049186_ArquivosUsuario.resx">
+      <DependentUpon>201702152049186_ArquivosUsuario.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

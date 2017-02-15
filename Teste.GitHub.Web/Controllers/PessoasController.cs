@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -9,6 +10,7 @@ using System.Web.Mvc;
 using Teste.GitHub.Domain.Context;
 using Teste.GitHub.Domain.Entidades;
 using Teste.GitHub.Domain.Repositorio;
+using Teste.GitHub.Web.Models.Upload;
 
 namespace Teste.GitHub.Web.Controllers
 {
@@ -92,6 +94,37 @@ namespace Teste.GitHub.Web.Controllers
                 return RedirectToAction("Index");
             }
             return View(pessoa);
+        }
+
+
+        public ActionResult uploadArquivos(Remessa arq)
+        {
+            try
+            {
+                string nomeArquivo = "";
+                string arquivoEnviados = "";
+                foreach (var arquivo in arq.Arquivos)
+                {
+                    if (arquivo.ContentLength > 0)
+                    {
+                        nomeArquivo = Path.GetFileName(arquivo.FileName);
+                        var caminho = Path.Combine(Server.MapPath("~/App_Data/uploads"), nomeArquivo);
+                        arquivo.SaveAs(caminho);
+                    }
+                    arquivoEnviados = arquivoEnviados + " , " + nomeArquivo;
+                }
+                ViewBag.Mensagem = "Arquivos Enviados :" + arquivoEnviados + ", com sucesso!";
+
+            }
+
+            catch (Exception ex)
+            {
+                ViewBag.Mensagem = "Ocorreu um Erro: " + ex.Message;
+            }
+
+            return View();
+           
+
         }
 
 

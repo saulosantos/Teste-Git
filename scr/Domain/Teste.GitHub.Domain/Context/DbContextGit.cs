@@ -28,6 +28,7 @@ namespace Teste.GitHub.Domain.Context
         public DbSet<Propriedade> propriedades { get; set; }
         public DbSet<TipoUsuario> TipoUsuarios { get; set; }
         public DbSet<Usuario> Usurios { get; set; }
+        public DbSet<ArquivoPessoa> ArquivosPessoas { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
