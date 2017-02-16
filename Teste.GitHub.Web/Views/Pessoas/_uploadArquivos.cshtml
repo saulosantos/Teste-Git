@@ -6,26 +6,18 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Remessa</h4>
+        <h4>Anexar Arquivos</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            <td>Arquivo: </td>
-            <td><input type="file" id="Arquivos" name="Arquivos" multiple /></td>
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <td>Arquivo: </td>
+                <td><input type="file" id="Arquivos" name="Arquivos" multiple /></td>
+                <input type="submit" value="Enviar" class="btn btn-default" />
             </div>
         </div>
         <tr>
             <td>@ViewBag.Mensagem</td>
         </tr>
     </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
 }

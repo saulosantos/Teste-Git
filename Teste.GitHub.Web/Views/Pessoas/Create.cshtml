@@ -1,5 +1,6 @@
 ﻿@model Teste.GitHub.Domain.Entidades.Pessoa
 
+
 @{
     ViewBag.Title = "Create";
 }
@@ -7,10 +8,10 @@
 <h2>Create</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Pessoa</h4>
         <hr />
@@ -63,17 +64,24 @@
             </div>
         </div>
 
-
-
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Cadastrar" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
-    @Html.Partial("_uploadArquivos", new Teste.GitHub.Web.Models.Upload.Remessa())
+@{
+    if (@ViewBag.IdCadastrado != null)
+    {
+
+        @ViewBag.IdCadastrado
+
+        @Html.Partial("_uploadArquivos", "Teste.GitHub.Web.Models.ViewModel.PessoasArquivosViewModel")
+
+    };
+}
 
 <div>
     @Html.ActionLink("Back to List", "Index")
@@ -81,4 +89,5 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+
 }

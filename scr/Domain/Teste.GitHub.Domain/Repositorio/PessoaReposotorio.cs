@@ -12,12 +12,16 @@ namespace Teste.GitHub.Domain.Repositorio
     {
        
 
-        public void SalvarPessoa(Pessoa pessoa)
+        public string SalvarPessoa(Pessoa pessoa)
         {
             using (var _context = new DbContextGit())
             {
+                pessoa.DataCadastro = DateTime.Now;
+                pessoa.Ativo = true;
                 _context.Pessoas.Add(pessoa);
                 _context.SaveChanges();
+
+                return pessoa.PessoaId.ToString();
 
             }
 

@@ -56,13 +56,14 @@ namespace Teste.GitHub.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                pessoa.DataCadastro = DateTime.Now;
-                pessoa.Ativo = true;
+
                 _contexto.SalvarPessoa(pessoa);
-                return RedirectToAction("Index");
+               // ViewBag.IdCadastrado = pessoa.PessoaId;
+                //return RedirectToAction("Index");
+                return View();
             }
 
-            return View(pessoa);
+            return View();
         }
 
         // GET: Pessoas/Edit/5
@@ -97,8 +98,12 @@ namespace Teste.GitHub.Web.Controllers
         }
 
 
-        public ActionResult uploadArquivos(Remessa arq)
+        public ActionResult uploadArquivos(Remessa arq, int? caminhoUrl)
         {
+            //Caminho URL
+            // caminhoUrl: 1 = Novo Cadastro
+            // caminhoUrl: 2 = Edição
+
             try
             {
                 string nomeArquivo = "";
@@ -122,7 +127,7 @@ namespace Teste.GitHub.Web.Controllers
                 ViewBag.Mensagem = "Ocorreu um Erro: " + ex.Message;
             }
 
-            return View();
+            return RedirectToAction("Index");
            
 
         }
