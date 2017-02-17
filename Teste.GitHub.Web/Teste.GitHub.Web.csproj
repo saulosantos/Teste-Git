@@ -214,6 +214,8 @@
     <Content Include="Views\Usuario\Edit.cshtml" />
     <Content Include="Views\Pessoas\_uploadArquivos.cshtml" />
     <Content Include="Views\Pessoas\Create.cshtml" />
+    <Content Include="Views\Pessoas\ultimosCadastros.cshtml" />
+    <Content Include="Views\Pessoas\listarImagens.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\uploads\" />

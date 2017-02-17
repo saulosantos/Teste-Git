@@ -13,5 +13,10 @@ namespace Teste.GitHub.Web.Models.Upload
         public int IdCadastrado { get; set; }
 
 
+        public string ArquivoCaminho { get; set; }
+
+        public string extencao { get; set; }
+
+
     }
 }

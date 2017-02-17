@@ -1,13 +1,13 @@
 ﻿@model Teste.GitHub.Domain.Entidades.Pessoa
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detalhes do Cadastro";
 }
 
-<h2>Details</h2>
+<h2>Detalhes</h2>
 
 <div>
-    <h4>Pessoa</h4>
+    <h4>Cadastro de Pessoa - Informações</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -76,7 +76,26 @@
 
     </dl>
 </div>
+
+
+<script>
+$(document).ready(function(){
+
+
+                 $.get("/Pessoas/listarImagens/39", {
+				}, function(msg){
+				$("#resultado").html(msg);
+				})
+
+    });
+</script>
+
+
+<div id=resultado name=resultado>
+
+</div>
+
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.PessoaId }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Editar Cadastro", "Edit", new { id = Model.PessoaId }) |
+    @Html.ActionLink("Voltar a Lista", "Index")
 </p>

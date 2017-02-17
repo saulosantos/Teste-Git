@@ -28,7 +28,7 @@ namespace Teste.GitHub.Domain.Repositorio
         }
 
 
-        public Pessoa OberPorId(int id)
+        public Pessoa OberPorId(int? id)
         {
             using (var _context = new DbContextGit())
             {
@@ -45,6 +45,38 @@ namespace Teste.GitHub.Domain.Repositorio
             }
                
         }
+
+        public List<Pessoa> ultimosCadastros()
+        {
+            using (var _context = new DbContextGit())
+            {
+                return _context.Pessoas.Where(p => p.Ativo == true).Take(10).OrderByDescending(p => p.PessoaId).ToList();
+            }
+
+        }
+
+
+        public void CadastrarArquivos(ArquivoPessoa arquivopessoa)
+        {
+            using (var _context = new DbContextGit())
+            {
+                _context.ArquivosPessoas.Add(arquivopessoa);
+                _context.SaveChanges();
+            }
+        }
+
+
+        public IList<ArquivoPessoa> ListarArquivos(int? id)
+        {
+            using(var _context = new DbContextGit())
+            {
+              return _context.ArquivosPessoas.Include("Pessoa")
+                    .Where(p => p.Ativo == true)
+                    .Where(p => p.PessoaId == id)
+                    .OrderByDescending(p => p.DataCadastro).ToList();
+            }
+        }
+
 
     }
 }

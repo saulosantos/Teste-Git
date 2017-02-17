@@ -33,7 +33,7 @@ namespace Teste.GitHub.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Pessoa pessoa = db.Pessoas.Find(id);
+            Pessoa pessoa = _contexto.OberPorId(id);
             if (pessoa == null)
             {
                 return HttpNotFound();
@@ -75,7 +75,7 @@ namespace Teste.GitHub.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Pessoa pessoa = db.Pessoas.Find(id);
+            Pessoa pessoa = _contexto.OberPorId(id);
             if (pessoa == null)
             {
                 return HttpNotFound();
@@ -100,7 +100,7 @@ namespace Teste.GitHub.Web.Controllers
         }
 
 
-        public ActionResult uploadArquivos(Remessa arq, int? caminhoUrl)
+        public ActionResult uploadArquivos(Remessa arq, int IdCadastrado)
         {
             //Caminho URL
             // caminhoUrl: 1 = Novo Cadastro
@@ -110,16 +110,34 @@ namespace Teste.GitHub.Web.Controllers
             {
                 string nomeArquivo = "";
                 string arquivoEnviados = "";
-                int? IdCadastrado;
+                string extencao = "";
+                string endCaminho = "";
+                int TamanhoArquivo = 0;
                 foreach (var arquivo in arq.Arquivos)
                 {
                     if (arquivo.ContentLength > 0)
                     {
-                        nomeArquivo = Path.GetFileName(arquivo.FileName);
-                        var caminho = Path.Combine(Server.MapPath("~/App_Data/uploads"), nomeArquivo);
+                        //nomeArquivo = Path.GetFileName(arquivo.FileName);
+                        nomeArquivo = Path.GetRandomFileName();
+                        extencao = Path.GetExtension(arquivo.FileName);
+                        var caminho = Path.Combine(Server.MapPath("~/App_Data/uploads"), nomeArquivo + extencao);
+                        TamanhoArquivo = arquivo.ContentLength;
+                        endCaminho = "/App_Data/uploads/" + nomeArquivo + extencao;
                         arquivo.SaveAs(caminho);
+                   
+
+                        //Salva no BD as informações
+                        ArquivoPessoa pessoa = new ArquivoPessoa();
+                        pessoa.PessoaId = IdCadastrado;
+                        pessoa.ArquivoCaminho = endCaminho;
+                        pessoa.extencao = extencao;
+                        pessoa.Ativo = true;
+                        pessoa.DataCadastro = DateTime.Now;
+
+
+                        _contexto.CadastrarArquivos(pessoa);
+
                     }
-                    IdCadastrado = arq.IdCadastrado;
                     arquivoEnviados = arquivoEnviados + " , " + nomeArquivo;
                 }
                 ViewBag.Mensagem = "Arquivos Enviados :" + arquivoEnviados + ", com sucesso!";
@@ -131,9 +149,28 @@ namespace Teste.GitHub.Web.Controllers
                 ViewBag.Mensagem = "Ocorreu um Erro: " + ex.Message;
             }
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Details", new { id = IdCadastrado });
            
 
+        }
+
+
+        public ActionResult listarImagens(int? id)
+        {
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+                return View(_contexto.ListarArquivos(id));
+        }
+
+
+        public ActionResult ultimosCadastros()
+        {
+            
+            return View(_contexto.ultimosCadastros());
         }
 
 
