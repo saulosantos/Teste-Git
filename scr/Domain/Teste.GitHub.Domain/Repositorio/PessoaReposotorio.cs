@@ -12,7 +12,7 @@ namespace Teste.GitHub.Domain.Repositorio
     {
        
 
-        public string SalvarPessoa(Pessoa pessoa)
+        public int SalvarPessoa(Pessoa pessoa)
         {
             using (var _context = new DbContextGit())
             {
@@ -21,7 +21,7 @@ namespace Teste.GitHub.Domain.Repositorio
                 _context.Pessoas.Add(pessoa);
                 _context.SaveChanges();
 
-                return pessoa.PessoaId.ToString();
+                return pessoa.PessoaId;
 
             }
 

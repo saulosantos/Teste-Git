@@ -13,6 +13,7 @@
             <div class="col-md-offset-2 col-md-10">
                 <td>Arquivo: </td>
                 <td><input type="file" id="Arquivos" name="Arquivos" multiple /></td>
+                @Html.Hidden("IdCadastrado", (object)ViewBag.IdCadastrado);
                 <input type="submit" value="Enviar" class="btn btn-default" />
             </div>
         </div>
@@ -20,4 +21,5 @@
             <td>@ViewBag.Mensagem</td>
         </tr>
     </div>
+    @ViewBag.IdCadastrado
 }

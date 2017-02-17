@@ -58,7 +58,9 @@ namespace Teste.GitHub.Web.Controllers
             {
 
                 _contexto.SalvarPessoa(pessoa);
-               // ViewBag.IdCadastrado = pessoa.PessoaId;
+                ViewBag.IdCadastrado = pessoa.PessoaId;
+
+
                 //return RedirectToAction("Index");
                 return View();
             }
@@ -108,6 +110,7 @@ namespace Teste.GitHub.Web.Controllers
             {
                 string nomeArquivo = "";
                 string arquivoEnviados = "";
+                int? IdCadastrado;
                 foreach (var arquivo in arq.Arquivos)
                 {
                     if (arquivo.ContentLength > 0)
@@ -116,6 +119,7 @@ namespace Teste.GitHub.Web.Controllers
                         var caminho = Path.Combine(Server.MapPath("~/App_Data/uploads"), nomeArquivo);
                         arquivo.SaveAs(caminho);
                     }
+                    IdCadastrado = arq.IdCadastrado;
                     arquivoEnviados = arquivoEnviados + " , " + nomeArquivo;
                 }
                 ViewBag.Mensagem = "Arquivos Enviados :" + arquivoEnviados + ", com sucesso!";

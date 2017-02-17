@@ -10,6 +10,7 @@ namespace Teste.GitHub.Web.Models.Upload
 
         public IEnumerable<HttpPostedFileBase> Arquivos { get; set; }
 
+        public int IdCadastrado { get; set; }
 
 
     }
