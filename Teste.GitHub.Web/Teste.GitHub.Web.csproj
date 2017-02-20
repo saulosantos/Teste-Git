@@ -216,6 +216,7 @@
     <Content Include="Views\Pessoas\Create.cshtml" />
     <Content Include="Views\Pessoas\ultimosCadastros.cshtml" />
     <Content Include="Views\Usuario\ListaTipoUSer.cshtml" />
+    <Content Include="Views\Pessoas\_testePartinal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\uploads\" />

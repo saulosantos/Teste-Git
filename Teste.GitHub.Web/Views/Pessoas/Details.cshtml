@@ -78,7 +78,49 @@
 </div>
 
 
+
 <p>
     @Html.ActionLink("Editar Cadastro", "Edit", new { id = Model.PessoaId }) |
     @Html.ActionLink("Voltar a Lista", "Index")
 </p>
+
+
+
+@Scripts.Render("~/bundles/jquery")
+
+<input type="text" id="txtName" />
+<input type="button" id="btnGet" value="Get Current Time" />
+
+<script type="text/javascript">
+        $(function () {
+            $("#btnGet").click(function () {
+                $.ajax({
+                    type: "GET",
+                    url: "/Pessoas/listarImagens",
+                    data: 'id=' + $("#txtName").val() + "",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (response) {
+
+                        for (var i in data) {
+                            // console.log(data[i]);
+                            var ArquivoCaminho = (data[i]["ArquivoCaminho"])
+                           // console.log(data[i]["Telefone"])
+                            //console.log(data[i]["PessoaId"])
+
+                        }
+
+
+                        alert("Hello: " + response.ArquivoCaminho + "");
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    },
+                    error: function (response) {
+                        alert(response.responseText);
+                    }
+                });
+            });
+        });
+</script>
+

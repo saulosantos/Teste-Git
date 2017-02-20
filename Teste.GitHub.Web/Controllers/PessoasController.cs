@@ -164,9 +164,12 @@ namespace Teste.GitHub.Web.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-             var teste = db.ArquivosPessoas.Include("Pessoa")
-               .Where(t => t.PessoaId == id && t.Ativo == true)
-             .OrderByDescending(t => t.ArquivoPessoaId).ToList();
+
+
+                var teste = db.ArquivosPessoas
+                    .Where(t => t.PessoaId == id && t.Ativo == true)
+                    .OrderByDescending(t => t.ArquivoPessoaId).ToList();
+
 
             return Json(teste, JsonRequestBehavior.AllowGet);
 
