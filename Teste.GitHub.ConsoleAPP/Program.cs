@@ -37,12 +37,12 @@ namespace Teste.GitHub.ConsoleAPP
             //LISTAR ------
             PessoaReposotorio _context = new PessoaReposotorio();
 
-            var usuarios = _context.ListarArquivos(39);
+            var usuarios = _context.ListarArquivos(19);
             foreach(ArquivoPessoa listararq in usuarios)
             {
                 contador +=  1;
                 Console.WriteLine(
-                    listararq.ArquivoCaminho);
+                    listararq.Pessoa.PessoaId);
             }
 
             Console.WriteLine(contador);

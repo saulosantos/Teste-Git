@@ -23,7 +23,8 @@ namespace Teste.GitHub.Web.Controllers
         // GET: Pessoas
         public ActionResult Index()
         {
-            return View(db.Pessoas.ToList());
+           return View(db.Pessoas.ToList());
+
         }
 
         // GET: Pessoas/Details/5
@@ -163,7 +164,12 @@ namespace Teste.GitHub.Web.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-                return View(_contexto.ListarArquivos(id));
+             var teste = db.ArquivosPessoas.Include("Pessoa")
+               .Where(t => t.PessoaId == id && t.Ativo == true)
+             .OrderByDescending(t => t.ArquivoPessoaId).ToList();
+
+            return Json(teste, JsonRequestBehavior.AllowGet);
+
         }
 
 

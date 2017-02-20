@@ -110,6 +110,14 @@ namespace Teste.GitHub.Web.Controllers
 
         }
 
+        public ActionResult ListaTipoUSer()
+        {
+
+           // return View(_contexto.ListaTipoUser());
+
+            return Json(_contexto.ListaTipoUser(), JsonRequestBehavior.AllowGet);
+        }
+
 
 
 

@@ -10,7 +10,7 @@ namespace Teste.GitHub.Domain.Repositorio
 {
     public class PessoaReposotorio
     {
-       
+     
 
         public int SalvarPessoa(Pessoa pessoa)
         {
@@ -62,18 +62,6 @@ namespace Teste.GitHub.Domain.Repositorio
             {
                 _context.ArquivosPessoas.Add(arquivopessoa);
                 _context.SaveChanges();
-            }
-        }
-
-
-        public IList<ArquivoPessoa> ListarArquivos(int? id)
-        {
-            using(var _context = new DbContextGit())
-            {
-              return _context.ArquivosPessoas.Include("Pessoa")
-                    .Where(p => p.Ativo == true)
-                    .Where(p => p.PessoaId == id)
-                    .OrderByDescending(p => p.DataCadastro).ToList();
             }
         }
 

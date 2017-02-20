@@ -102,6 +102,17 @@ namespace Teste.GitHub.Domain.Repositorio
 
         }
 
+        public IList<TipoUsuario> ListaTipoUser()
+        {
+            using (var _context = new DbContextGit())
+            {
+                //var res = _context.ArquivosPessoas.Where(p => p.ArquivoPessoaId == id);
+
+                return _context.TipoUsuarios.ToList();
+            }
+
+        }
+
 
 
     }

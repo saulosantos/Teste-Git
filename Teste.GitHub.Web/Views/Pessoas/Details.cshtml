@@ -78,23 +78,6 @@
 </div>
 
 
-<script>
-$(document).ready(function(){
-
-
-                 $.get("/Pessoas/listarImagens/39", {
-				}, function(msg){
-				$("#resultado").html(msg);
-				})
-
-    });
-</script>
-
-
-<div id=resultado name=resultado>
-
-</div>
-
 <p>
     @Html.ActionLink("Editar Cadastro", "Edit", new { id = Model.PessoaId }) |
     @Html.ActionLink("Voltar a Lista", "Index")

@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Teste.GitHub.Domain.Entidades.TipoUsuario>
+
+@{
+    ViewBag.Title = "ListaTipoUSer";
+}
+
+<h2>ListaTipoUSer</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NomeTipoUsuario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ativo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NomeTipoUsuario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ativo)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.TipoUsuarioId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.TipoUsuarioId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.TipoUsuarioId })
+        </td>
+    </tr>
+}
+
+</table>
