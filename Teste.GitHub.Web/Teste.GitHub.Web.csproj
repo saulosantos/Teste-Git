@@ -157,6 +157,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PessoasController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
@@ -216,10 +217,12 @@
     <Content Include="Views\Pessoas\Create.cshtml" />
     <Content Include="Views\Pessoas\ultimosCadastros.cshtml" />
     <Content Include="Views\Usuario\ListaTipoUSer.cshtml" />
-    <Content Include="Views\Pessoas\_testePartinal.cshtml" />
+    <Content Include="Views\Pessoas\_mostrarImagem.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\uploads\" />
+    <Folder Include="imagens\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

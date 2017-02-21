@@ -39,6 +39,8 @@ namespace Teste.GitHub.Web.Controllers
             {
                 return HttpNotFound();
             }
+
+            @ViewBag.IdCadastrado = id;
             return View(pessoa);
         }
 
@@ -121,9 +123,9 @@ namespace Teste.GitHub.Web.Controllers
                         //nomeArquivo = Path.GetFileName(arquivo.FileName);
                         nomeArquivo = Path.GetRandomFileName();
                         extencao = Path.GetExtension(arquivo.FileName);
-                        var caminho = Path.Combine(Server.MapPath("~/App_Data/uploads"), nomeArquivo + extencao);
+                        var caminho = Path.Combine(Server.MapPath("~/imagens"), nomeArquivo + extencao);
                         TamanhoArquivo = arquivo.ContentLength;
-                        endCaminho = "/App_Data/uploads/" + nomeArquivo + extencao;
+                        endCaminho = "/imagens/" + nomeArquivo + extencao;
                         arquivo.SaveAs(caminho);
                    
 

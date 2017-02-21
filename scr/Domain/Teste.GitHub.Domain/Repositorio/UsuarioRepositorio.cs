@@ -114,6 +114,15 @@ namespace Teste.GitHub.Domain.Repositorio
         }
 
 
+        public Usuario verificaUsuario(Usuario usuario)
+        {
+            using (var _context = new DbContextGit())
+            {
+                return _context.Usurios.FirstOrDefault(u => u.LoginUser == usuario.LoginUser && u.SenhaUsuario == usuario.SenhaUsuario);
+            }
+        }
+
+
 
     }
 }
