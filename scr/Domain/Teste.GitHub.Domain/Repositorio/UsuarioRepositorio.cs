@@ -118,7 +118,8 @@ namespace Teste.GitHub.Domain.Repositorio
         {
             using (var _context = new DbContextGit())
             {
-                return _context.Usurios.FirstOrDefault(u => u.LoginUser == usuario.LoginUser && u.SenhaUsuario == usuario.SenhaUsuario);
+                usuario = _context.Usurios.FirstOrDefault(u => u.LoginUser == usuario.LoginUser && u.SenhaUsuario == usuario.SenhaUsuario);
+                return (usuario);
             }
         }
 

@@ -12,7 +12,7 @@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <td>Arquivo: </td>
-                <td><input type="file" id="Arquivos" name="Arquivos" multiple /></td>
+                <td><input type="file" id="Arquivos" name="Arquivos" multiple accept="image/jpg, image/png" /></td>
                 @Html.Hidden("IdCadastrado", (object)ViewBag.IdCadastrado);
                 <input type="submit" value="Enviar" class="btn btn-default" />
             </div>

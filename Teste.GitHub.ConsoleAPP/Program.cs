@@ -32,26 +32,30 @@ namespace Teste.GitHub.ConsoleAPP
 
 
             /*LISTAGEM USUÁRIO
-             *    */
+             *    
             int contador = 0;
             //LISTAR ------
-            PessoaReposotorio _context = new PessoaReposotorio();
+            UsuarioRepositorio _context = new UsuarioRepositorio();
 
-            var usuarios = _context.ListarArquivos(19);
-            foreach(ArquivoPessoa listararq in usuarios)
+            Usuario modelUSer = new Usuario();
+            modelUSer.SenhaUsuario = "123456abc";
+            modelUSer.LoginUser = "saulo.santos";
+
+            var usuarios = _context.verificaUsuario(modelUSer);
+              foreach(Usuario listararq in usuarios)
             {
-                contador +=  1;
-                Console.WriteLine(
-                    listararq.Pessoa.PessoaId);
+               contador +=  1;
+              Console.WriteLine(
+                 listararq.UsuarioId);
             }
 
-            Console.WriteLine(contador);
+            //Console.WriteLine(contador);
 
- 
+            */
 
 
 
-                Console.WriteLine("Olá mundo maluco!");
+                          Console.WriteLine("Olá mundo maluco!");
             Console.ReadKey();
     }
     }

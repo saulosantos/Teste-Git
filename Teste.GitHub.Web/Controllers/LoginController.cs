@@ -20,29 +20,23 @@ namespace Teste.GitHub.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(Usuario usuario)
+        public ActionResult Index([Bind(Include = "LoginUser, SenhaUsuario")]Usuario usuario)
         {
 
-            if (ModelState.IsValid)
+            //  if (ModelState.IsValid)
+            // {
+            Usuario user = _contexto.verificaUsuario(usuario);
+            if (user == null)
             {
-              Usuario user =  _contexto.verificaUsuario(usuario);
-                if (user != null)
-                {
-                    if (!Equals(usuario.SenhaUsuario, user.SenhaUsuario))
-                    {
-                        ModelState.AddModelError("", "Senha/Usuario incorreta!");
-                    }
-                    else
-                    {
-                        FormsAuthentication.SetAuthCookie(user.LoginUser, false);
-                    }
+                ModelState.AddModelError("", "Usuário ou senha incorreta!");
 
-                    return RedirectToAction("Index", "home");
-                }
+                return View(new Usuario());
             }
 
+                FormsAuthentication.SetAuthCookie(user.LoginUser, false);
+                return RedirectToAction("Index", "home");
 
-            return View(new Usuario());
+
         }
     }
 }
